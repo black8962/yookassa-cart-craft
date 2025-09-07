@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Tech Store Design System - Modern & Unique */
 
 @layer base {
   :root {
@@ -17,26 +15,49 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Tech-inspired color palette */
+    --primary: 250 95% 65%; /* Electric Blue */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 250 95% 55%;
+    --primary-glow: 250 85% 75%;
+    --primary-dark: 250 95% 45%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 280 60% 70%; /* Purple accent */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 280 60% 60%;
+
+    --accent: 160 85% 55%; /* Mint green */
+    --accent-foreground: 222.2 84% 4.9%;
+    --accent-hover: 160 85% 45%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 250 95% 65%;
 
-    --radius: 0.5rem;
+    /* Premium gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-tech: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-hero: linear-gradient(135deg, hsl(250 95% 20%), hsl(280 90% 25%), hsl(250 95% 65%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.8), hsl(250 20% 98%));
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.1), hsl(0 0% 100% / 0.05));
+
+    /* Modern shadows */
+    --shadow-elegant: 0 20px 40px -12px hsl(var(--primary) / 0.25);
+    --shadow-glow: 0 0 60px hsl(var(--primary-glow) / 0.4);
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.1);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.08);
+
+    /* Smooth animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -65,24 +86,35 @@ All colors MUST be HSL.
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Dark mode tech colors */
+    --primary: 250 95% 70%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --primary-hover: 250 95% 60%;
+    --primary-glow: 250 85% 80%;
+    --primary-dark: 250 95% 50%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 280 60% 75%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --secondary-hover: 280 60% 65%;
+
+    --accent: 160 85% 60%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --accent-hover: 160 85% 50%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 250 95% 70%;
+
+    /* Dark gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(250 95% 15%), hsl(280 90% 20%), hsl(250 95% 60%));
+    --gradient-card: linear-gradient(145deg, hsl(222.2 84% 6%), hsl(250 20% 8%));
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.05), hsl(0 0% 100% / 0.02));
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -101,5 +133,72 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Custom animations */
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.6);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Glass morphism utilities */
+  .glass {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(0 0% 100% / 0.1);
+  }
+
+  .tech-glow {
+    box-shadow: var(--shadow-glow);
   }
 }
